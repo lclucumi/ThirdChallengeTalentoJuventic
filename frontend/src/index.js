@@ -6,6 +6,7 @@ import Inicio from "./views/Inicio";
 
 import reportWebVitals from "./reportWebVitals";
 import About from "./views/About";
+import Menu from "./views/Menu";
 
 ReactDOM.render(
   <React.StrictMode>

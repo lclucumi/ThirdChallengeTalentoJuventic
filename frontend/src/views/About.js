@@ -11,16 +11,9 @@ import imgChef6 from "../images/chefs/waiter-2.jpg";
 import imgChef7 from "../images/chefs/waiter-3.jpg";
 import imgChef8 from "../images/chefs/cleaning-staff.jpg";
 import imgChef9 from "../images/chefs/cleaning-staff-2.jpg";
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Row,
-  Col,
-} from "reactstrap";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class About extends React.Component {
   constructor(props) {
@@ -94,18 +87,15 @@ class About extends React.Component {
                 return (
                   <Col className="px-4 team" md="4">
                     <Card>
-                      <CardImg
-                        top
-                        width="100%"
-                        src={this.state.chefImg[i]}
-                        alt="Card image cap"
-                      />
-                      <CardBody>
-                        <CardTitle tag="h3">{chef.nombre}</CardTitle>
-                        <CardSubtitle tag="h5" className="mb-2 text-muted">
-                          {chef.puesto}
-                        </CardSubtitle>
-                        <CardText>
+                      <Card.Img variant="top" src={this.state.chefImg[i]} />
+                      <Card.Body>
+                        <Card.Title>
+                          <h3>{chef.nombre}</h3>
+                        </Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">
+                          <h5>{chef.puesto}</h5>
+                        </Card.Subtitle>
+                        <Card.Text>
                           <div class="social">
                             <a href="">
                               <i class="bx bxl-twitter"></i>
@@ -120,8 +110,8 @@ class About extends React.Component {
                               <i class="bx bxl-linkedin"></i>
                             </a>
                           </div>
-                        </CardText>
-                      </CardBody>
+                        </Card.Text>
+                      </Card.Body>
                     </Card>
                   </Col>
                 );
