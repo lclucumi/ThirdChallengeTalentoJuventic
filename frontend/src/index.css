@@ -385,44 +385,44 @@ h3 {
 /*--------------------------------------------------------------
 # Sección de eventos inicio
 --------------------------------------------------------------*/
-#eventos .image-bg-service {
+#events .image-bg-service {
   background-image: url("../src/images/events-bg-index.png");
   padding-top: 20px;
 }
 
-#eventos h2,
+#events h2,
 h3 {
   font-family: "Dancing Script", cursive;
 }
 
-#eventos .section-title {
+#events .section-title {
   padding-bottom: 60px;
   text-align: center;
 }
 
-#eventos .btn-menu {
+#events .btn-menu {
   display: flex;
   justify-content: center;
   padding-bottom: 40px;
 }
 
-#eventos .btn-outline-warning {
+#events .btn-outline-warning {
   color: #000;
   background-color: transparent;
   border-color: #0c0900;
 }
 
-#eventos .btn-outline-warning:hover {
+#events .btn-outline-warning:hover {
   color: #fff;
   background-color: #ffb03b;
   border-color: #ffbf3b;
 }
 
-#eventos h2 {
+#events h2 {
   color: #000;
 }
 
-#eventos span {
+#events span {
   color: #ffb03b;
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
-import imgAbout from "../images/about.jpg";
+import imgAbout from "../../images/about.jpg";
 
 class IndexAbout extends React.Component {
   render() {

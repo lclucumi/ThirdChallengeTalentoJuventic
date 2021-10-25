@@ -1,7 +1,9 @@
 import React from "react";
-import IndexCarousel from "./IndexCarousel";
-import IndexAbout from "./IndexAbout";
-import IndexOutStanding from "./IndexOutStandind";
+import IndexCarousel from "./indexComponents/IndexCarousel";
+import IndexAbout from "./indexComponents/IndexAbout";
+import IndexOutStanding from "./indexComponents/IndexOutStandind";
+import TestimonialCarousel from "./TestimonialCarousel";
+import About from "./About";
 
 class Inicio extends React.Component {
   render() {
@@ -10,6 +12,7 @@ class Inicio extends React.Component {
         <IndexCarousel />
         <IndexAbout />
         <IndexOutStanding />
+        <TestimonialCarousel />
       </>
     );
   }
