@@ -11,9 +11,7 @@ import imgChef6 from "../images/chefs/waiter-2.jpg";
 import imgChef7 from "../images/chefs/waiter-3.jpg";
 import imgChef8 from "../images/chefs/cleaning-staff.jpg";
 import imgChef9 from "../images/chefs/cleaning-staff-2.jpg";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { Card, Col, Row } from "react-bootstrap";
 
 class About extends React.Component {
   constructor(props) {

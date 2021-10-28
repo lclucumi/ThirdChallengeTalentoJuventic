@@ -1,6 +1,5 @@
 import React from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { Col, Row } from "react-bootstrap";
 import imgAbout from "../../images/about.jpg";
 
 class IndexAbout extends React.Component {

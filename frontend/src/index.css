@@ -167,13 +167,13 @@ h5 {
 }
 
 #menu .id-food {
-  float: right;
-  margin: 0 34% 0 0;
+  float: left;
+  margin: 0 0 0 10px;
 }
 
 #menu .cantidadMenu {
   float: left;
-  margin: 0 0 0 10%;
+  margin-left: 32px;
   margin-bottom: 20px;
 }
 

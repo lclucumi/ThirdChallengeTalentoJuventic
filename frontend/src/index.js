@@ -2,15 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import Inicio from "./views/Inicio";
-
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import About from "./views/About";
-import Menu from "./views/Menu";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Inicio />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
