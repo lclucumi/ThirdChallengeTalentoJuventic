@@ -29,28 +29,36 @@ class Menu extends React.Component {
                 <i className="bx bxs-file-pdf"></i>
               </a>
             </div>
-            {dataMenu.objMenu.map((menu, i) => {
-              if (i <= 5) {
-                return (
-                  <Row className="justify-content-md-center">
-                    <Col md="2"></Col>
-                    <MenuPlates
-                      i={i}
-                      precio={menu.precio}
-                      plato={menu.plato}
-                      ingredientes={menu.ingredientes}
-                    />
-                    <MenuPlates
-                      i={i + 6}
-                      precio={menu.precio}
-                      plato={menu.plato}
-                      ingredientes={menu.ingredientes}
-                    />
-                    <Col md="2"></Col>
-                  </Row>
-                );
-              }
-            })}
+
+            <Row className="justify-content-md-center">
+              {dataMenu.objMenu.map((menu, i) => {
+                if (i % 2 == 0) {
+                  return (
+                    <>
+                      <Col md="2"></Col>
+                      <MenuPlates
+                        i={i}
+                        precio={menu.precio}
+                        plato={menu.plato}
+                        ingredientes={menu.ingredientes}
+                      />
+                    </>
+                  );
+                } else {
+                  return (
+                    <>
+                      <MenuPlates
+                        i={i}
+                        precio={menu.precio}
+                        plato={menu.plato}
+                        ingredientes={menu.ingredientes}
+                      />
+                      <Col md="2"></Col>
+                    </>
+                  );
+                }
+              })}
+            </Row>
           </div>
         </section>
         ;
