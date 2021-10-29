@@ -6,12 +6,9 @@
       "descripcion": "Cumplir un año más de vida es un evento que debe celebrarse en grande. Ya sea quieras tener:",
       "text": "Nosotros contamos con todo lo que necesitas.",
       "puntos": [
-        {
-          "1": "Fiesta Temática",
-          "2": "Casino",
-          "3": "Juegos Gigantes para que todos tus invitados se diviertan",
-          "4": "Juegos Gigantes para que todos tus invitados se diviertan"
-        }
+        { "1": "Fiesta Temática" },
+        { "2": "Casino" },
+        { "3": "Juegos Gigantes para que todos tus invitados se diviertan" }
       ]
     },
     {
@@ -20,12 +17,9 @@
       "descripcion": "Si te gusta la variedad y tener muchas opciones de dinámicas para tu despedida, qué te parece nuestro original y novedoso programa de juegos, en donde todas se divertirán como nunca, contamos con:",
       "text": "¡Anímate a disfrutar con nosotros de tus eventos!",
       "puntos": [
-        {
-          "1": "Animadores.",
-          "2": "Souvenirs.",
-          "3": "premios.",
-          "4": "Una gran conductora que hará de este rato un momento de muchas risas y grandes recuerdos con tus amigos."
-        }
+        { "1": "Animadores." },
+        { "2": "Souvenirs." },
+        { "3": "premios." }
       ]
     },
     {
@@ -35,8 +29,10 @@
       "text": "¡Importante! reservar con al menos 3 días de anticipación.",
       "puntos": [
         {
-          "1": "Platos gourmet.",
-          "2": "Música ambiental o temática.",
+          "1": "Platos gourmet."
+        },
+        { "2": "Música ambiental o temática." },
+        {
           "3": "Mesas al aire libre o si lo deseas puedes cenar directamente dentro del restaurante."
         }
       ]
@@ -48,10 +44,9 @@
       "text": "Nosotros nos encargaremos de llevar tu primera experiencia disco. Donde no dejarán de brincar, bailar y cantar con nuestro karaoke. Estamos seguros que será la fiesta del año de todos los niños.",
       "puntos": [
         {
-          "1": "Tendrás el mejor equipo de iluminación, audio y pista de baile.",
-          "2": "Tendrás toda una batucada infantil.",
-          "3": "No tendrás que preocuparte de nada, nuestros animadores y DJ harán que tu fiesta sea todo un éxito con la música del momento."
-        }
+          "1": "Tendrás el mejor equipo de iluminación, audio y pista de baile."
+        },
+        { "2": "Tendrás toda una batucada infantil." }
       ]
     },
     {
@@ -61,23 +56,24 @@
       "text": "Tu personalidad fijará el ritmo del evento.",
       "puntos": [
         {
-          "1": "Romántica.",
-          "2": "Solemne.",
-          "3": "Desenfadada.",
-          "4": "Divertida."
-        }
+          "1": "Romántica."
+        },
+        { "2": "Solemne." },
+        { "3": "Desenfadada." },
+        { "4": "Divertida." }
       ]
     },
     {
       "servicio": "Aniversario",
       "precio": "$120.000",
-      "descripcion": "Ese momento único en la vida, merece ser compartido con felicidad y pasión.  Por este motivo, te guiamos en todo el proceso del aniversario de boda para que sea perfecto e inolvidable.",
-      "text": "Piensa en el lugar ideal y adaptaremos  a nuestro equipo de trabajo, luces, sonido y chefs profesionales para que todo sea espectacular y entrañable.",
+      "descripcion": "Ese momento único en la vida, merece ser compartido con felicidad y pasión.",
+      "text": "Adaptaremos  a nuestro equipo de trabajo para que todo sea espectacular y entrañable.",
       "puntos": [
         {
-          "1": "Te escuchamos para comprender tu vida en pareja y así imaginarla llena de júbilo para transmitirlo a lo largo de la duración del evento",
-          "2": "A partir de este momento inicial, relájate y comienza a disfrutar porque nosotros nos encargaremos de todo para tu comodidad y satisfacción.",
-          "3": "Piensa en el lugar ideal y adaptaremos  a nuestro equipo de trabajo, luces, sonido y chefs profesionales para que todo sea espectacular y entrañable."
+          "1": "Te escuchamos para transmitir lo que deseas a lo largo de la duración del evento."
+        },
+        {
+          "2": "A partir de este momento relájate y comienza a disfrutar porque nosotros nos encargaremos de todo."
         }
       ]
     }
