@@ -1,7 +1,8 @@
 import React from "react";
 import dataMenu from "../json/dataMenu.json";
 import MenuPlates from "./menuComponents/MenuPlates";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -11,11 +12,6 @@ class Menu extends React.Component {
     };
   }
 
-  onClick(info) {
-    this.setState({
-      modalState: !info,
-    });
-  }
   render() {
     return (
       <>
@@ -34,33 +30,40 @@ class Menu extends React.Component {
               {dataMenu.objMenu.map((menu, i) => {
                 if (i % 2 == 0) {
                   return (
-                    <>
-                      <Col md="2"></Col>
+                    <div id="left_column" key={i}>
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
                         plato={menu.plato}
                         ingredientes={menu.ingredientes}
+                        key={menu.precio}
                       />
-                    </>
+                    </div>
                   );
                 } else {
                   return (
-                    <>
+                    <div id="right_column" key={i}>
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
                         plato={menu.plato}
                         ingredientes={menu.ingredientes}
+                        key={menu.precio}
                       />
-                      <Col md="2"></Col>
-                    </>
+                    </div>
                   );
                 }
               })}
             </Row>
           </div>
         </section>
+        <div>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <script src="../js/car.js"></script>
+            <script src="../js/order.js"></script>
+          </Helmet>
+        </div>
         ;
       </>
     );

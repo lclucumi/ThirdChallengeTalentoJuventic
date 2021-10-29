@@ -1,41 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-function MenuModal() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
-
-      <Modal
-        id="exampleModal"
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
+class MenuModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalState: this.props.open,
+      modalHide: this.props.hide,
+    };
+  }
+  render() {
+    return (
+      <Modal show={this.state.modalState} onHide={this.state.modalHide}>
         <Modal.Header closeButton>
-          <Modal.Title>Nombre</Modal.Title>
+          <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don't even try to press
-          escape key.
-        </Modal.Body>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="secondary">Close</Button>
         </Modal.Footer>
       </Modal>
-    </>
-  );
+    );
+  }
 }
 
 export default MenuModal;

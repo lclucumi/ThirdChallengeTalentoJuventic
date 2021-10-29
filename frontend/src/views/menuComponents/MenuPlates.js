@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Modal, Button, Col } from "react-bootstrap";
 import imgPlate1 from "../../images/menu/lobster-bisque.jpg";
 import imgPlate2 from "../../images/menu/Bread-Barrel.jpg";
 import imgPlate3 from "../../images/menu/Crab-Cake.jpeg";
@@ -13,6 +13,7 @@ import imgPlate9 from "../../images/menu/Greek-Salad.jpeg";
 import imgPlate10 from "../../images/menu/Lasagna.jpg";
 import imgPlate11 from "../../images/menu/Pizza.jpg";
 import imgPlate12 from "../../images/menu/Ajiaco-santafereno.jpg";
+import MenuModal from "./MenuModal";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Menu extends React.Component {
   render() {
     return (
       <>
-        <Col md="4" className="menu-item-section">
+        <Col md="10" className="menu-item-section">
           <Col md="12" className="menu-item-section">
             <Col md="6" className="text-center order-1 order-lg-2">
               <img
@@ -50,18 +51,33 @@ class Menu extends React.Component {
               <h6 className="price">
                 <strong>{this.props.precio}</strong>
               </h6>
-              <a type="button" data-toggle="modal" data-target="#exampleModal">
+              <a type="button" data-toggle="modal" data-target="#">
                 <h5 className="title-food">
                   <strong>{this.props.plato}</strong>
+                  {/* <MenuModal open={true} hide={false} /> */}
+                  <Modal id="exampleModal" show={false} onHide={true}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Woohoo, you're reading this text in a modal!
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary">Close</Button>
+                    </Modal.Footer>
+                  </Modal>
                 </h5>
               </a>
 
               <p>{this.props.ingredientes}</p>
-
-              <input type="number" class="form-control cantidadMenu" min="1" />
+              <input
+                type="number"
+                className="form-control cantidadMenu"
+                min="1"
+              />
               <a
-                class="btn btn-outline-warning add-car id-food"
-                href=""
+                className="btn btn-outline-warning add-car id-food"
+                href="/buy"
                 type="button"
                 data-id={this.props.i}
               >

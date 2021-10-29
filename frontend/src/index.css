@@ -6,13 +6,15 @@ header .bx {
   font-size: 24px;
 }
 
+header .nav-link {
+  color: #d6d6d6;
+}
+
 header .car-icon {
   color: #b8b8b8;
   font-size: 24px;
   text-align: right;
-  padding-right: 30px;
 }
-
 /*--------------------------------------------------------------
 # Sección de inicio
 --------------------------------------------------------------*/
@@ -112,6 +114,20 @@ header .car-icon {
 /*--------------------------------------------------------------
 # Sección de menu
 --------------------------------------------------------------*/
+#left_column {
+  width: 36%;
+  float: left;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+#right_column {
+  width: 36%;
+  float: left;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
 #menu {
   padding: 104px 0 80px 0;
   width: 100%;
@@ -168,13 +184,13 @@ h5 {
 
 #menu .id-food {
   float: left;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 6px;
 }
 
 #menu .cantidadMenu {
   float: left;
-  margin-left: 32px;
-  margin-bottom: 20px;
+  margin-left: 12px;
+  margin-bottom: 10px;
 }
 
 #menu .form-control {
