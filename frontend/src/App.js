@@ -26,7 +26,7 @@ function App() {
           <Buy />
         </Route>
         <Route exact path="/service">
-          <Inicio />
+          <Service />
         </Route>
         <Route exact path="/contact">
           <ContactUs />
