@@ -6,6 +6,7 @@ import Menu from "./views/Menu";
 import About from "./views/About";
 import Buy from "./views/Buy";
 import Service from "./views/Service";
+import ContactUs from "./views/ContactUs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           <Inicio />
         </Route>
         <Route exact path="/contact">
-          <Inicio />
+          <ContactUs />
         </Route>
         <Route exact path="/map">
           <Inicio />
