@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 //Secciones
+import Login from "./views/Login";
 import Inicio from "./views/Inicio";
 import Menu from "./views/Menu";
 import About from "./views/About";
@@ -14,6 +15,9 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
+          <Login />
+        </Route>
+        <Route exact path="/index">
           <Inicio />
         </Route>
         <Route exact path="/about">

@@ -1,4 +1,5 @@
 import React from "react";
+import ModalService from "../views/ServiceComponents/ModalService";
 import Carousel from "react-bootstrap/Carousel";
 import dataServices from "../json/dataServices.json";
 import imgService1 from "../images/event-birthday.jpg";
@@ -68,14 +69,10 @@ class Services extends React.Component {
                                 </ul>
                                 <p>{service.text}</p>
                                 <div className="btn-menu">
-                                  <a
-                                    className="btn btn-outline-warning"
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalCumple"
-                                  >
-                                    Reserva Ahora
-                                  </a>
+                                  <ModalService
+                                    service={service.servicio}
+                                    img={i}
+                                  />
                                   <a
                                     className="btn btn-outline-warning"
                                     href="/contact"

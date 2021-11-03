@@ -1,5 +1,6 @@
 import React from "react";
-import { Modal, Button, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+import InfoModal from "./MenuModal";
 import imgPlate1 from "../../images/menu/lobster-bisque.jpg";
 import imgPlate2 from "../../images/menu/Bread-Barrel.jpg";
 import imgPlate3 from "../../images/menu/Crab-Cake.jpeg";
@@ -13,7 +14,6 @@ import imgPlate9 from "../../images/menu/Greek-Salad.jpeg";
 import imgPlate10 from "../../images/menu/Lasagna.jpg";
 import imgPlate11 from "../../images/menu/Pizza.jpg";
 import imgPlate12 from "../../images/menu/Ajiaco-santafereno.jpg";
-import MenuModal from "./MenuModal";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -35,6 +35,7 @@ class Menu extends React.Component {
       ],
     };
   }
+
   render() {
     return (
       <>
@@ -51,25 +52,14 @@ class Menu extends React.Component {
               <h6 className="price">
                 <strong>{this.props.precio}</strong>
               </h6>
-              <a type="button" data-toggle="modal" data-target="#">
-                <h5 className="title-food">
-                  <strong>{this.props.plato}</strong>
-                  {/* <MenuModal open={true} hide={false} /> */}
-                  <Modal id="exampleModal" show={false} onHide={true}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      Woohoo, you're reading this text in a modal!
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary">Close</Button>
-                    </Modal.Footer>
-                  </Modal>
-                </h5>
-              </a>
+              <InfoModal
+                name={this.props.plate}
+                ingredients={this.props.ingredients}
+                description={this.props.description}
+                img={this.props.i}
+              />
 
-              <p>{this.props.ingredientes}</p>
+              <p>{this.props.ingredients}</p>
               <input
                 type="number"
                 className="form-control cantidadMenu"

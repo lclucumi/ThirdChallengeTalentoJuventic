@@ -2,7 +2,6 @@ import React from "react";
 import dataMenu from "../json/dataMenu.json";
 import MenuPlates from "./menuComponents/MenuPlates";
 import { Row } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -34,9 +33,10 @@ class Menu extends React.Component {
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
-                        plato={menu.plato}
-                        ingredientes={menu.ingredientes}
+                        plate={menu.plato}
+                        ingredients={menu.ingredientes}
                         key={menu.precio}
+                        description={menu.descripcion}
                       />
                     </div>
                   );
@@ -46,9 +46,10 @@ class Menu extends React.Component {
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
-                        plato={menu.plato}
-                        ingredientes={menu.ingredientes}
+                        plate={menu.plato}
+                        ingredients={menu.ingredientes}
                         key={menu.precio}
+                        description={menu.descripcion}
                       />
                     </div>
                   );
@@ -58,11 +59,9 @@ class Menu extends React.Component {
           </div>
         </section>
         <div>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <script src="../js/car.js"></script>
-            <script src="../js/order.js"></script>
-          </Helmet>
+          <meta charSet="utf-8" />
+          <script src="../js/car.js"></script>
+          <script src="../js/order.js"></script>
         </div>
         ;
       </>
