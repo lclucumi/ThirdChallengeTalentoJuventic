@@ -33,7 +33,91 @@ class Menu extends React.Component {
         imgPlate11,
         imgPlate12,
       ],
+      cantidad: 0,
     };
+  }
+
+  showLocal(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("add-car")) {
+      const product = e.target.parentElement.parentElement;
+      this.readDataProduct(product);
+      console.log(product);
+    }
+  }
+
+  readDataProduct(product) {
+    const infoProduct = {
+      imagen: product.querySelector("img").src,
+      titulo: product.querySelector("h5,.title-food").textContent,
+      precio: product.querySelector("price,strong").textContent,
+      id: product.querySelector(".add-car").getAttribute("data-id"),
+      cantidad: product.querySelector(".cantidadMenu").value,
+    };
+    //Cuando se seleccione uno igual
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (productLS) {
+      if (productLS.id === infoProduct.id) {
+        productsLS = productLS.id;
+      }
+    });
+    if (productsLS === infoProduct.id) {
+      this.setState({
+        cantidad: product.querySelector(".cantidadMenu").value,
+      });
+      console.log(this.state.cantidad);
+      this.saveProductsLocalStorage(infoProduct);
+    } else {
+      this.insertCar(infoProduct);
+    }
+  }
+
+  insertCar(product) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <img src="${product.imagen}" width=100>
+      </td>
+      <td>${product.titulo}</td>
+      <td>${product.precio}</td>
+      <td id='cant'>${product.cantidad}</td>
+      <td>
+        <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
+      </td>
+    `;
+    document.querySelector("#car-list tbody").appendChild(row);
+    this.saveProductsLocalStorage(product);
+  }
+
+  saveProductsLocalStorage(product) {
+    let products;
+    products = this.obtainProductsLocalStorage();
+    products.push(product);
+    localStorage.setItem("productos", JSON.stringify(products));
+  }
+
+  deleteProductLocalStorage(productID) {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (productLS, index) {
+      if (productLS.id === productID) {
+        productsLS.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("productos", JSON.stringify(productsLS));
+  }
+
+  obtainProductsLocalStorage() {
+    let productLS;
+
+    if (localStorage.getItem("productos") === null) {
+      productLS = [];
+    } else {
+      productLS = JSON.parse(localStorage.getItem("productos"));
+    }
+    return productLS;
   }
 
   render() {
@@ -67,9 +151,10 @@ class Menu extends React.Component {
               />
               <a
                 className="btn btn-outline-warning add-car id-food"
-                href="/buy"
+                href=""
                 type="button"
                 data-id={this.props.i}
+                onClick={(e) => this.showLocal(e)}
               >
                 Añadir al carrito
               </a>

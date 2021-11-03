@@ -5,21 +5,21 @@ class Footer extends React.Component {
     return (
       <>
         <footer id="footer">
-          <div class="container">
+          <div className="container">
             <h3>Dunkers</h3>
             <p>¡Bienvenido! estás en la página del mejor restaurante.</p>
-            <div class="social-links">
-              <a href="#" class="facebook">
-                <i class="bx bxl-facebook"></i>
+            <div className="social-links">
+              <a href="#" className="facebook">
+                <i className="bx bxl-facebook"></i>
               </a>
-              <a href="#" class="instagram">
-                <i class="bx bxl-youtube"></i>
+              <a href="#" className="instagram">
+                <i className="bx bxl-youtube"></i>
               </a>
-              <a href="#" class="twitter">
-                <i class="bx bxl-twitter"></i>
+              <a href="#" className="twitter">
+                <i className="bx bxl-twitter"></i>
               </a>
             </div>
-            <div class="copyright">
+            <div className="copyright">
               &copy; Copyright{" "}
               <strong>
                 <span>Dunkers</span>

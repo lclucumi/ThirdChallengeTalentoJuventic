@@ -1,3 +1,4 @@
+import Car from "./car";
 const carInstance = new Car();
 const buycar = document.getElementById("buy-car");
 const products = document.getElementById("list-products");
