@@ -8,6 +8,7 @@ import About from "./views/About";
 import Buy from "./views/Buy";
 import Service from "./views/Service";
 import ContactUs from "./views/ContactUs";
+import SiteMap from "./views/SiteMap";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
           <ContactUs />
         </Route>
         <Route exact path="/map">
-          <Inicio />
+          <SiteMap />
         </Route>
       </Switch>
     </BrowserRouter>
