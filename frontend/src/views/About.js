@@ -12,6 +12,8 @@ import imgChef7 from "../images/chefs/waiter-3.jpg";
 import imgChef8 from "../images/chefs/cleaning-staff.jpg";
 import imgChef9 from "../images/chefs/cleaning-staff-2.jpg";
 import { Card, Col, Row } from "react-bootstrap";
+import Header from "./Header";
+import Footer from "./Footer";
 
 class About extends React.Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class About extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <section id="us">
           <div class="section-title">
             <h2>
@@ -118,6 +121,7 @@ class About extends React.Component {
           </div>
         </section>
         <TestimonialCarousel />
+        <Footer />
       </>
     );
   }

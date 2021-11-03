@@ -8,7 +8,8 @@ import imgService3 from "../images/event-private.jpg";
 import imgService4 from "../images/child-party.jpg";
 import imgService5 from "../images/proposal.jpg";
 import imgService6 from "../images/anniversary.jpg";
-
+import Header from "./Header";
+import Footer from "./Footer";
 class Services extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,7 @@ class Services extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <section id="eventos-section">
           <div className="container">
             <div className="section-title">
@@ -93,6 +95,7 @@ class Services extends React.Component {
             </div>
           </div>
         </section>
+        <Footer />
       </>
     );
   }

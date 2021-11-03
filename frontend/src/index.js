@@ -5,6 +5,7 @@ import "./index.css";
 import Login from "../src/views/Login";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
+import Header from "./views/Header";
 
 ReactDOM.render(
   <React.StrictMode>

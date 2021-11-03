@@ -1,10 +1,11 @@
 import React from "react";
-import { Helmet } from "react-helmet";
-
+import Header from "./Header";
+import Footer from "./Footer";
 class Buy extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <section id="buy">
           <div className="container">
             <div className="row mt-3">
@@ -123,13 +124,7 @@ class Buy extends React.Component {
             </div>
           </div>
         </section>
-        <div>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <script src="../js/car.js"></script>
-            <script src="../js/purchase.js"></script>
-          </Helmet>
-        </div>
+        <Footer />
       </>
     );
   }

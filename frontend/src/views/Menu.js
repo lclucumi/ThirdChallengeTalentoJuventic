@@ -2,7 +2,8 @@ import React from "react";
 import dataMenu from "../json/dataMenu.json";
 import MenuPlates from "./menuComponents/MenuPlates";
 import { Row } from "react-bootstrap";
-
+import Header from "./Header";
+import Footer from "./Footer";
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +15,7 @@ class Menu extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <section id="menu">
           <div className="container content-menu" id="list-products">
             <div className="section-title">
@@ -64,6 +66,7 @@ class Menu extends React.Component {
           <script src="../js/order.js"></script>
         </div>
         ;
+        <Footer />
       </>
     );
   }
