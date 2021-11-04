@@ -2,10 +2,43 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 class Buy extends React.Component {
+  obtainProductsLocalStorage() {
+    let productLS;
+
+    if (localStorage.getItem("productos") === null) {
+      productLS = [];
+    } else {
+      productLS = JSON.parse(localStorage.getItem("productos"));
+    }
+    return productLS;
+  }
+
+  totalCalculate = () => {
+    let productLS;
+    let total = 0,
+      subtotal = 0,
+      igv = 0;
+    productLS = this.obtainProductsLocalStorage();
+    for (let i = 0; i < productLS.length; i++) {
+      let element = Number(productLS[i].precio * productLS[i].cantidad);
+      total = total + element;
+    }
+    igv = parseFloat(total * 0.18).toFixed(2);
+    subtotal = parseFloat(total - igv).toFixed(2);
+
+    document.getElementById("subtotal").innerHTML = "$" + subtotal;
+    document.getElementById("igv").innerHTML = "$" + igv;
+    document.getElementById("total").value = "$" + total.toFixed(2);
+  };
+
   render() {
     return (
       <>
-        <Header />
+        <Header
+          total={() => {
+            this.totalCalculate();
+          }}
+        />
         <section id="buy">
           <div className="container">
             <div className="row mt-3">

@@ -47,7 +47,7 @@ class Car {
         <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
       </td>
     `;
-    productLists.appendChild(row);
+    document.querySelector("#car-list tbody").appendChild(row);
     this.saveProductsLocalStorage(product);
   }
 
@@ -65,8 +65,10 @@ class Car {
 
   emptyCar(e) {
     e.preventDefault();
-    while (productLists.firstChild) {
-      productLists.removeChild(productLists.firstChild);
+    while (document.querySelector("#car-list tbody").firstChild) {
+      document
+        .querySelector("#car-list tbody")
+        .removeChild(document.querySelector("#car-list tbody").firstChild);
     }
     this.emptyLocalStorage();
     return false;
@@ -119,7 +121,7 @@ class Car {
           <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
         </td>
       `;
-      productLists.appendChild(row);
+      document.querySelector("#car-list tbody").appendChild(row);
     });
   }
 
@@ -132,7 +134,7 @@ class Car {
     if (this.obtainProductsLocalStorage().length === 0) {
       window.alert("No hay productos en el carrito");
     } else {
-      location.href = "buy.html";
+      window.location.href = "buy.html";
     }
   }
 
@@ -179,7 +181,7 @@ class Car {
           }"></a>
         </td>
       `;
-      shopLists.appendChild(row);
+      document.querySelector("#buy-list tbody").appendChild(row);
     });
   }
 

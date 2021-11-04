@@ -1,6 +1,109 @@
 import React from "react";
-
 class Header extends React.Component {
+  emptyCar(e) {
+    e.preventDefault();
+    while (document.querySelector("#car-list tbody").firstChild) {
+      document
+        .querySelector("#car-list tbody")
+        .removeChild(document.querySelector("#car-list tbody").firstChild);
+    }
+    this.emptyLocalStorage();
+    return false;
+  }
+
+  emptyLocalStorage() {
+    localStorage.clear();
+  }
+
+  orderProcess(e) {
+    e.preventDefault();
+    if (this.obtainProductsLocalStorage().length === 0) {
+      window.alert("No hay productos en el carrito");
+    } else {
+      window.location.href = "/buy";
+    }
+  }
+
+  obtainProductsLocalStorage() {
+    let productLS;
+
+    if (localStorage.getItem("productos") === null) {
+      productLS = [];
+    } else {
+      productLS = JSON.parse(localStorage.getItem("productos"));
+    }
+    return productLS;
+  }
+
+  eraseProduct(e) {
+    e.preventDefault();
+    let product, productID;
+    if (e.target.classList.contains("delete-product")) {
+      e.target.parentElement.parentElement.remove();
+      product = e.target.parentElement.parentElement;
+      productID = product.querySelector("a").getAttribute("data-id");
+    }
+    this.deleteProductLocalStorage(productID);
+    //this.props.total();
+  }
+
+  deleteProductLocalStorage(productID) {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (productLS, index) {
+      if (productLS.id === productID) {
+        productsLS.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("productos", JSON.stringify(productsLS));
+  }
+
+  obtainEvent(e) {
+    e.preventDefault();
+    let id, cant, product, productsLS;
+    if (e.target.classList.contains("cantidad")) {
+      product = e.target.parentElement.parentElement;
+      id = product.querySelector("a").getAttribute("data-id");
+      cant = product.querySelector("input").value;
+      let updateCant = document.querySelectorAll("#subtotals");
+      productsLS = this.obtainProductsLocalStorage();
+      productsLS.forEach(function (productLS, index) {
+        if (productLS.id === id) {
+          productLS.cantidad = cant;
+          updateCant[index].innerHTML = Number(cant * productsLS[index].precio);
+        }
+      });
+      localStorage.setItem("productos", JSON.stringify(productsLS));
+    } else {
+      console.log("click afuera");
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("DOMContentLoaded", this.readLocalStorage());
+  }
+
+  readLocalStorage() {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (product) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>
+          <img src="${product.imagen}" width=100>
+        </td>
+        <td>${product.titulo}</td>
+        <td>${product.precio}</td>
+        <td>${product.cantidad}</td>
+        <td>
+          <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
+        </td>
+      `;
+      document.querySelector("#car-list tbody").appendChild(row);
+    });
+  }
+
   render() {
     return (
       <>
@@ -78,6 +181,9 @@ class Header extends React.Component {
                             id="buy-car"
                             className="dropdown-menu"
                             aria-labelledby="navbarCollapse"
+                            onClick={(e) => this.eraseProduct(e)}
+                            onChange={(e) => this.obtainEvent(e)}
+                            onKeyUp={(e) => this.obtainEvent(e)}
                           >
                             <table id="car-list" className="table">
                               <thead>
@@ -96,6 +202,7 @@ class Header extends React.Component {
                               href="#"
                               id="empty-car"
                               className="btn btn-primary btn-block"
+                              onClick={(e) => this.emptyCar(e)}
                             >
                               Vaciar Carrito
                             </a>
@@ -103,6 +210,7 @@ class Header extends React.Component {
                               href="#"
                               id="buy-process"
                               className="btn btn-danger btn-block"
+                              onClick={(e) => this.orderProcess(e)}
                             >
                               Finalizar pedido
                             </a>

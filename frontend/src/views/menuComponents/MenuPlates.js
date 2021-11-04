@@ -14,7 +14,6 @@ import imgPlate9 from "../../images/menu/Greek-Salad.jpeg";
 import imgPlate10 from "../../images/menu/Lasagna.jpg";
 import imgPlate11 from "../../images/menu/Pizza.jpg";
 import imgPlate12 from "../../images/menu/Ajiaco-santafereno.jpg";
-
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -33,8 +32,27 @@ class Menu extends React.Component {
         imgPlate11,
         imgPlate12,
       ],
-      cantidad: 0,
     };
+  }
+
+  readLocalStorage() {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (product) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>
+          <img src="${product.imagen}" width=100>
+        </td>
+        <td>${product.titulo}</td>
+        <td>${product.precio}</td>
+        <td>${product.cantidad}</td>
+        <td>
+          <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
+        </td>
+      `;
+      document.querySelector("#car-list tbody").appendChild(row);
+    });
   }
 
   showLocal(e) {
@@ -63,10 +81,8 @@ class Menu extends React.Component {
       }
     });
     if (productsLS === infoProduct.id) {
-      this.setState({
-        cantidad: product.querySelector(".cantidadMenu").value,
-      });
-      console.log(this.state.cantidad);
+      this.deleteProductLocalStorage(infoProduct.id);
+      infoProduct.cantidad = product.querySelector(".cantidadMenu").value;
       this.saveProductsLocalStorage(infoProduct);
     } else {
       this.insertCar(infoProduct);
@@ -86,6 +102,7 @@ class Menu extends React.Component {
         <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
       </td>
     `;
+    //productLists
     document.querySelector("#car-list tbody").appendChild(row);
     this.saveProductsLocalStorage(product);
   }
