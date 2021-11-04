@@ -8,27 +8,26 @@ const orderProcessBtn = document.getElementById("buy-process");
 loadEvent();
 
 function loadEvent() {
-  // products.addEventListener("click", (e) => {
-  //   carInstance.buyProduct(e);
-  // });
+  products.addEventListener("click", (e) => {
+    carInstance.buyProduct(e);
+  });
 
-  // buycar.addEventListener("click", (e) => {
-  //   carInstance.eraseProduct(e);
-  // });
+  buycar.addEventListener("click", (e) => {
+    carInstance.eraseProduct(e);
+  });
 
-  // eraseCarBtn.addEventListener("click", (e) => {
-  //   carInstance.emptyCar(e);
-  // });
+  eraseCarBtn.addEventListener("click", (e) => {
+    carInstance.emptyCar(e);
+  });
 
   document.addEventListener("DOMContentLoaded", readLocalStorage());
+  orderProcessBtn.addEventListener("click", (e) => carInstance.orderProcess(e));
 
-  // orderProcessBtn.addEventListener("click", (e) => carInstance.orderProcess(e));
+  buycar.addEventListener("change", (e) => {
+    carInstance.obtainEvent(e);
+  });
 
-  // buycar.addEventListener("change", (e) => {
-  //   carInstance.obtainEvent(e);
-  // });
-
-  // buycar.addEventListener("keyup", (e) => {
-  //   carInstance.obtainEvent(e);
-  // });
+  buycar.addEventListener("keyup", (e) => {
+    carInstance.obtainEvent(e);
+  });
 }

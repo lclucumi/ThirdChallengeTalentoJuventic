@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import emailjs from "emailjs-com";
 class Buy extends React.Component {
   obtainProductsLocalStorage() {
     let productLS;
@@ -30,6 +31,152 @@ class Buy extends React.Component {
     document.getElementById("igv").innerHTML = "$" + igv;
     document.getElementById("total").value = "$" + total.toFixed(2);
   };
+
+  readLocalStorageShop() {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (product) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>
+          <img src="${product.imagen}" width=100>
+        </td>
+        <td>${product.titulo}</td>
+        <td>${product.precio}</td>
+        <td>
+          <input type="number" class="form-control cantidad" min="1" value=${
+            product.cantidad
+          }>
+        </td>
+        <td id='subtotals'>${(product.precio * product.cantidad).toFixed(
+          2
+        )}</td>
+        <td>
+          <a href="#" class="delete-product bx bxs-x-circle" style="font-size:30px" data-id="${
+            product.id
+          }"></a>
+        </td>
+      `;
+      document.querySelector("#buy-list tbody").appendChild(row);
+    });
+  }
+
+  eraseProduct(e) {
+    e.preventDefault();
+    let product, productID;
+    if (e.target.classList.contains("delete-product")) {
+      e.target.parentElement.parentElement.remove();
+      product = e.target.parentElement.parentElement;
+      productID = product.querySelector("a").getAttribute("data-id");
+    }
+    this.deleteProductLocalStorage(productID);
+    this.totalCalculate();
+  }
+
+  deleteProductLocalStorage(productID) {
+    let productsLS;
+    productsLS = this.obtainProductsLocalStorage();
+    productsLS.forEach(function (productLS, index) {
+      if (productLS.id === productID) {
+        productsLS.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("productos", JSON.stringify(productsLS));
+  }
+
+  componentDidMount() {
+    this.totalCalculate();
+    document.addEventListener("DOMContentLoaded", this.readLocalStorageShop());
+  }
+
+  emptyLocalStorage() {
+    localStorage.clear();
+  }
+
+  purchaseProcess(e) {
+    e.preventDefault();
+
+    if (this.obtainProductsLocalStorage().length === 0) {
+      window.alert(
+        "No se puede realizar la compra porque no hay productos seleccionados"
+      );
+      window.location.href = "menu.html";
+    } else if (
+      document.getElementById("client").value === "" ||
+      document.getElementById("address").value === ""
+    ) {
+      window.alert("Por favor, diligencie todos los campos");
+    } else {
+      const loadingGif = document.querySelector("#load");
+      loadingGif.style.display = "block";
+      const send = document.createElement("img");
+      send.src = "../images/mail.gif";
+      send.id = "mailImage";
+      let productsLS, product;
+      productsLS = JSON.parse(localStorage.getItem("productos"));
+      productsLS.forEach = (productLS) => {
+        product +=
+          "\n" +
+          JSON.stringify(
+            `Plato: ${productLS.titulo} Precio: ${productLS.precio} Cantidad: ${productLS.cantidad}`
+          );
+      };
+      console.log(document.querySelector("#total,p"));
+      emailjs
+        .sendForm(
+          "service_2xj4c8l",
+          "template_fqv6ixm",
+          {
+            addressee: document.getElementById("client").value,
+            products: product.replace("undefined", ""),
+            cc_to: document.getElementById("address").value,
+            total_value: document.getElementById("total").value,
+          },
+          "user_CWVJnQVkk2WBBvozaeuKP"
+        )
+        .then(
+          function () {
+            loadingGif.style.display = "none";
+            document.querySelector("#loaders").appendChild(send);
+            setTimeout(() => {
+              send.remove();
+              this.emptyLocalStorage();
+              alert(
+                "Pedido registrado exitosamente\n Revisa el correo diligenciado, por favor"
+              );
+              window.location = "/menu";
+            }, 2000);
+          },
+          function (err) {
+            alert(
+              "Falló el envío del email\r\n Respuesta:\n " + JSON.stringify(err)
+            );
+          }
+        );
+    }
+  }
+
+  obtainEvent(e) {
+    e.preventDefault();
+    let id, cant, product, productsLS;
+    if (e.target.classList.contains("cantidad")) {
+      product = e.target.parentElement.parentElement;
+      id = product.querySelector("a").getAttribute("data-id");
+      cant = product.querySelector("input").value;
+      let updateCant = document.querySelectorAll("#subtotals");
+      productsLS = this.obtainProductsLocalStorage();
+      productsLS.forEach(function (productLS, index) {
+        if (productLS.id === id) {
+          productLS.cantidad = cant;
+          updateCant[index].innerHTML = Number(cant * productsLS[index].precio);
+        }
+      });
+      localStorage.setItem("productos", JSON.stringify(productsLS));
+    } else {
+      console.log("click afuera");
+    }
+  }
 
   render() {
     return (
@@ -82,7 +229,13 @@ class Buy extends React.Component {
                     </div>
                   </div>
 
-                  <div id="buy-car" className="table-responsive">
+                  <div
+                    id="buy-car"
+                    className="table-responsive"
+                    onClick={(e) => this.eraseProduct(e)}
+                    onChange={(e) => this.obtainEvent(e)}
+                    onKeyUp={(e) => this.obtainEvent(e)}
+                  >
                     <table className="table" id="buy-list">
                       <thead>
                         <tr>
@@ -134,10 +287,7 @@ class Buy extends React.Component {
 
                   <div className="row justify-content-between">
                     <div className="col-md-4 mb-2">
-                      <a
-                        href="../pages/menu.html"
-                        className="btn btn-info btn-block"
-                      >
+                      <a href="/menu" className="btn btn-info btn-block">
                         Seguir comprando
                       </a>
                     </div>
@@ -147,6 +297,7 @@ class Buy extends React.Component {
                         className="btn btn-success btn-block"
                         type="submit"
                         id="process"
+                        onClick={(e) => this.purchaseProcess(e)}
                       >
                         Realizar compra
                       </button>
