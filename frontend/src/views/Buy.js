@@ -3,6 +3,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 import emailjs from "emailjs-com";
 class Buy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productEmail: "",
+    };
+  }
+
   obtainProductsLocalStorage() {
     let productLS;
 
@@ -14,7 +21,7 @@ class Buy extends React.Component {
     return productLS;
   }
 
-  totalCalculate = () => {
+  totalCalculate() {
     let productLS;
     let total = 0,
       subtotal = 0,
@@ -30,7 +37,7 @@ class Buy extends React.Component {
     document.getElementById("subtotal").innerHTML = "$" + subtotal;
     document.getElementById("igv").innerHTML = "$" + igv;
     document.getElementById("total").value = "$" + total.toFixed(2);
-  };
+  }
 
   readLocalStorageShop() {
     let productsLS;
@@ -54,7 +61,7 @@ class Buy extends React.Component {
         <td>
           <a href="#" class="delete-product bx bxs-x-circle" style="font-size:30px" data-id="${
             product.id
-          }"></a>
+          }"}></a>
         </td>
       `;
       document.querySelector("#buy-list tbody").appendChild(row);
@@ -74,6 +81,7 @@ class Buy extends React.Component {
   }
 
   deleteProductLocalStorage(productID) {
+    this.totalCalculate();
     let productsLS;
     productsLS = this.obtainProductsLocalStorage();
     productsLS.forEach(function (productLS, index) {
@@ -96,12 +104,11 @@ class Buy extends React.Component {
 
   purchaseProcess(e) {
     e.preventDefault();
-
     if (this.obtainProductsLocalStorage().length === 0) {
       window.alert(
         "No se puede realizar la compra porque no hay productos seleccionados"
       );
-      window.location.href = "menu.html";
+      window.location.href = "/menu";
     } else if (
       document.getElementById("client").value === "" ||
       document.getElementById("address").value === ""
@@ -115,21 +122,21 @@ class Buy extends React.Component {
       send.id = "mailImage";
       let productsLS, product;
       productsLS = JSON.parse(localStorage.getItem("productos"));
-      productsLS.forEach = (productLS) => {
+      productsLS.map((productLS, i) => {
         product +=
           "\n" +
           JSON.stringify(
             `Plato: ${productLS.titulo} Precio: ${productLS.precio} Cantidad: ${productLS.cantidad}`
           );
-      };
-      console.log(document.querySelector("#total,p"));
+      });
+      product = product.replace("undefined", "");
       emailjs
-        .sendForm(
+        .send(
           "service_2xj4c8l",
           "template_fqv6ixm",
           {
             addressee: document.getElementById("client").value,
-            products: product.replace("undefined", ""),
+            products: product,
             cc_to: document.getElementById("address").value,
             total_value: document.getElementById("total").value,
           },
@@ -141,7 +148,7 @@ class Buy extends React.Component {
             document.querySelector("#loaders").appendChild(send);
             setTimeout(() => {
               send.remove();
-              this.emptyLocalStorage();
+              localStorage.clear();
               alert(
                 "Pedido registrado exitosamente\n Revisa el correo diligenciado, por favor"
               );
@@ -159,6 +166,7 @@ class Buy extends React.Component {
 
   obtainEvent(e) {
     e.preventDefault();
+    this.totalCalculate();
     let id, cant, product, productsLS;
     if (e.target.classList.contains("cantidad")) {
       product = e.target.parentElement.parentElement;
@@ -176,6 +184,11 @@ class Buy extends React.Component {
     } else {
       console.log("click afuera");
     }
+  }
+
+  twoActionsBuy(e) {
+    this.obtainEvent(e);
+    this.eraseProduct(e);
   }
 
   render() {
@@ -232,7 +245,7 @@ class Buy extends React.Component {
                   <div
                     id="buy-car"
                     className="table-responsive"
-                    onClick={(e) => this.eraseProduct(e)}
+                    onClick={(e) => this.twoActionsBuy(e)}
                     onChange={(e) => this.obtainEvent(e)}
                     onKeyUp={(e) => this.obtainEvent(e)}
                   >

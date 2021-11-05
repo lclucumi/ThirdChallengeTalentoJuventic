@@ -6,8 +6,39 @@ import imgService3 from "../../images/event-private.jpg";
 import imgService4 from "../../images/child-party.jpg";
 import imgService5 from "../../images/proposal.jpg";
 import imgService6 from "../../images/anniversary.jpg";
+import emailjs from "emailjs-com";
 
 export default function InfoModal(props) {
+  const serviceID = "default_service";
+  const templateID = "template_6mr32th";
+  /** Servicios */
+
+  function dataService(e) {
+    e.preventDefault();
+    let btn = document.getElementById("button");
+    btn.value = "Reservando...";
+
+    emailjs
+      .sendForm(
+        serviceID,
+        templateID,
+        document.getElementById("form"),
+        "user_ueQX19o7DPyIEt7Q0KiW7"
+      )
+      .then(
+        () => {
+          btn.value = "Reservar";
+          alert("Reservado!");
+          localStorage.clear();
+        },
+        (err) => {
+          console.log("ERROR");
+          btn.value = "Reservar";
+          alert(JSON.stringify(err));
+        }
+      );
+  }
+
   const [imgs] = useState([
     imgService1,
     imgService2,
@@ -20,6 +51,7 @@ export default function InfoModal(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <>
       <a className="btn btn-outline-warning" type="button" onClick={handleShow}>
@@ -136,8 +168,8 @@ export default function InfoModal(props) {
             class="btn btn-outline-warning"
             type="submit"
             id="button"
+            onClick={(e) => dataService(e)}
             value="Reservar"
-            onclick="allLetter(document.form.nombre)"
           />
         </Modal.Footer>
       </Modal>

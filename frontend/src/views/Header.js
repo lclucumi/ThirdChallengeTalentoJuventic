@@ -44,7 +44,6 @@ class Header extends React.Component {
       productID = product.querySelector("a").getAttribute("data-id");
     }
     this.deleteProductLocalStorage(productID);
-    //this.props.total();
   }
 
   deleteProductLocalStorage(productID) {
