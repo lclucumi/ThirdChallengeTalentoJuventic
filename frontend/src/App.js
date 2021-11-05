@@ -16,10 +16,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Login />
-        </Route>
-        <Route exact path="/index">
           <Inicio />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/about">
           <About />

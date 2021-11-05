@@ -31,26 +31,26 @@ class Menu extends React.Component {
               {dataMenu.objMenu.map((menu, i) => {
                 if (i % 2 == 0) {
                   return (
-                    <div id="left_column" key={i}>
+                    <div id="left_column" key={menu.precio}>
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
                         plate={menu.plato}
                         ingredients={menu.ingredientes}
-                        key={menu.precio}
+                        key={i}
                         description={menu.descripcion}
                       />
                     </div>
                   );
                 } else {
                   return (
-                    <div id="right_column" key={i}>
+                    <div id="right_column" key={menu.precio}>
                       <MenuPlates
                         i={i}
                         precio={menu.precio}
                         plate={menu.plato}
                         ingredients={menu.ingredientes}
-                        key={menu.precio}
+                        key={i}
                         description={menu.descripcion}
                       />
                     </div>

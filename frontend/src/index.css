@@ -1,8 +1,19 @@
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-header .bx {
+header .facebook,
+.facebook:hover,
+.instagram,
+.instagram:hover,
+.twitter,
+.twitter:hover {
   color: #ffb03b;
+  font-size: 24px;
+}
+
+.bxs-x-circle,
+.bxs-x-circle:hover {
+  color: #f05252;
   font-size: 24px;
 }
 
@@ -14,6 +25,18 @@ header .car-icon {
   color: #b8b8b8;
   font-size: 24px;
   text-align: right;
+}
+
+.user {
+  color: #d6d6d6;
+  font-size: 28px;
+  padding-right: 22px;
+}
+
+.user:hover {
+  color: #ffb03b;
+  font-size: 28px;
+  padding-right: 22px;
 }
 /*--------------------------------------------------------------
 # Sección de inicio

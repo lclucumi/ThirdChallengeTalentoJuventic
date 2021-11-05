@@ -37,7 +37,7 @@ class Login extends React.Component {
                       </Row>
                       <Row>
                         <Col id="sigIn">
-                          <Button variant="success" size="md" href="\index">
+                          <Button variant="success" size="md" href="/">
                             Iniciar Sesión
                           </Button>
                         </Col>

@@ -130,7 +130,7 @@ class Header extends React.Component {
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="/index">
+                    <a className="nav-link" aria-current="page" href="/">
                       Inicio
                     </a>
                   </li>
@@ -200,7 +200,7 @@ class Header extends React.Component {
                             <a
                               href="#"
                               id="empty-car"
-                              className="btn btn-primary btn-block"
+                              className="btn btn-danger btn-block"
                               onClick={(e) => this.emptyCar(e)}
                             >
                               Vaciar Carrito
@@ -208,7 +208,7 @@ class Header extends React.Component {
                             <a
                               href="#"
                               id="buy-process"
-                              className="btn btn-danger btn-block"
+                              className="btn btn-success btn-block"
                               onClick={(e) => this.orderProcess(e)}
                             >
                               Finalizar pedido
@@ -219,6 +219,12 @@ class Header extends React.Component {
                     </div>
                   </li>
                 </ul>
+
+                <form className="d-flex userProfile">
+                  <a href="/login" className="user">
+                    <i class="bx bx-user-circle"></i>
+                  </a>
+                </form>
 
                 <form className="d-flex media">
                   <a href="#" className="facebook">

@@ -45,10 +45,12 @@ class Menu extends React.Component {
           <img src="${product.imagen}" width=100>
         </td>
         <td>${product.titulo}</td>
-        <td>${product.precio}</td>
+        <td>${(product.precio * product.cantidad).toFixed(2)}</td>
         <td>${product.cantidad}</td>
         <td>
-          <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
+          <a href="#" class="delete-product bx bxs-x-circle" data-id="${
+            product.id
+          }"></a>
         </td>
       `;
       document.querySelector("#car-list tbody").appendChild(row);
@@ -96,10 +98,12 @@ class Menu extends React.Component {
         <img src="${product.imagen}" width=100>
       </td>
       <td>${product.titulo}</td>
-      <td>${product.precio}</td>
+      <td>${(product.precio * product.cantidad).toFixed(2)}</td>
       <td id='cant'>${product.cantidad}</td>
       <td>
-        <a href="#" class="delete-product bx bxs-x-circle" data-id="${product.id}"></a>
+        <a href="#" class="delete-product bx bxs-x-circle" data-id="${
+          product.id
+        }"></a>
       </td>
     `;
     //productLists
